@@ -5,7 +5,7 @@ const App = (): JSX.Element => {
     useState<string>('');
 
   const handleEventFromNative = async (e: any) => {
-    setToastMessageFromNative(e.data);
+    alert(e.data);
   };
 
   useEffect(() => {
