@@ -13,8 +13,8 @@ const App = (): JSX.Element => {
     window.addEventListener('calledFunctionByNative', handleEventFromNative);
 
     // Web -> Native
-    if (window.callFunctionByWeb) {
-      window.callFunctionByWeb.showToastMessage('나는 K상남자~!');
+    if (window.calledFunctionByWeb) {
+      window.calledFunctionByWeb.showToastMessage('나는 K상남자~!');
     }
   }, []);
 

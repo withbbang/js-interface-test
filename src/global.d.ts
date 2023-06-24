@@ -1,6 +1,6 @@
 export {};
 declare global {
   interface Window {
-    callFunctionByWeb: any;
+    calledFunctionByWeb: any;
   }
 }
