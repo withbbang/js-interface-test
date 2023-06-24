@@ -16,7 +16,7 @@ const App = (): JSX.Element => {
     }
   }, []);
 
-  return <>Sex!</>;
+  return <h1>Javascript Interface Test</h1>;
 };
 
 export default App;
