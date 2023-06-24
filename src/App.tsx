@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = (): JSX.Element => {
+  const [toastMessageFromNative, setToastMessageFromNative] =
+    useState<string>('');
+
+  const handleEventFromNative = async (e: any) => {
+    setToastMessageFromNative(e.data);
+  };
+
+  useEffect(() => {
+    window.addEventListener('calledFunctionByNative', handleEventFromNative);
+
+    if (window.callFunctionByWeb) {
+      window.callFunctionByWeb.showToastMessage('나는 K상남자~!');
+    }
+  }, []);
+
+  return <>Sex!</>;
+};
 
 export default App;
