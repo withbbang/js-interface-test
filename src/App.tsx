@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const App = (): JSX.Element => {
-  const [toastMessageFromNative, setToastMessageFromNative] =
-    useState<string>('');
-
-  const handleEventFromNative = async (e: any) => {
-    alert(e.data);
-  };
-
   useEffect(() => {
     // Native -> Web
     window.addEventListener('calledFunctionByNative', handleEventFromNative);
   }, []);
+
+  const handleEventFromNative = async (e: any) => {
+    alert(e.data);
+  };
 
   const handleCallNativeFunction = () => {
     // Web -> Native
