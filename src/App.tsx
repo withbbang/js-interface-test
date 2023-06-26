@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 const App = (): JSX.Element => {
   useEffect(() => {
     const handleEventFromNative = async (data: any) => {
-      alert(data);
+      window.alert(data);
       console.log(data);
     };
 
