@@ -15,7 +15,7 @@ const App = (): JSX.Element => {
     }
 
     return () => {
-      window.removeEventListener('javascriptFunction', handleEventFromNative);
+      window.removeEventListener('showAlert', handleEventFromNative);
     };
   }, []);
 
