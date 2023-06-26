@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const App = (): JSX.Element => {
+  const [value, setValue] = useState('');
+
   useEffect(() => {
     const handleEventFromNative = async (data: any) => {
-      window.alert(data);
-      console.log(data);
+      setValue(data.detail);
     };
 
     // Native -> Web
@@ -40,6 +41,7 @@ const App = (): JSX.Element => {
   return (
     <div>
       <h1>Javascript Interface Test</h1>
+      <input value={value} />
       <button onClick={handleShowToastMessage}>showToastMessage</button>
       {/* <button onClick={handleShowAlertMessage}>showAlertMessage</button> */}
     </div>
