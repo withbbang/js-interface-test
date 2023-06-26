@@ -18,7 +18,7 @@ const App = (): JSX.Element => {
   };
 
   const reactFunc = (data: any) => {
-    console.log('data in reactFunc:, ', data);
+    alert('data in reactFunc:, ' + data);
   };
 
   return (
