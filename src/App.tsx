@@ -6,8 +6,8 @@ const App = (): JSX.Element => {
     window.addEventListener('calledFunctionByNative', handleEventFromNative);
   }, []);
 
-  const handleEventFromNative = async (e: any) => {
-    alert(e.data);
+  const handleEventFromNative = async (data: any) => {
+    alert(data);
   };
 
   const handleCallNativeFunction = () => {
@@ -15,6 +15,10 @@ const App = (): JSX.Element => {
     if (window.calledFunctionByWeb) {
       window.calledFunctionByWeb.showToastMessage('나는 K상남자~!');
     }
+  };
+
+  const reactFunc = (data: any) => {
+    console.log('data in reactFunc:, ', data);
   };
 
   return (
