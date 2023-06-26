@@ -4,8 +4,8 @@ const App = (): JSX.Element => {
   const [value, setValue] = useState('');
 
   useEffect(() => {
-    const handleEventFromNative = async (data: any) => {
-      setValue(data.detail);
+    const handleEventFromNative = async (e: any) => {
+      setValue(e.detail.data);
     };
 
     // Native -> Web
