@@ -2,14 +2,22 @@ import { useEffect } from 'react';
 
 const App = (): JSX.Element => {
   useEffect(() => {
+    const handleEventFromNative = async (data: any) => {
+      alert(data);
+      console.log(data);
+    };
+
     // Native -> Web
     window.addEventListener('showAlert', handleEventFromNative);
-  }, []);
 
-  const handleEventFromNative = async (data: any) => {
-    alert(data);
-    console.log(data);
-  };
+    if (window.android) {
+      window.android.showAlertMessage();
+    }
+
+    return () => {
+      window.removeEventListener('javascriptFunction', handleEventFromNative);
+    };
+  }, []);
 
   const handleShowToastMessage = () => {
     // Web -> Native
@@ -33,7 +41,7 @@ const App = (): JSX.Element => {
     <div>
       <h1>Javascript Interface Test</h1>
       <button onClick={handleShowToastMessage}>showToastMessage</button>
-      <button onClick={handleShowAlertMessage}>showAlertMessage</button>
+      {/* <button onClick={handleShowAlertMessage}>showAlertMessage</button> */}
     </div>
   );
 };
