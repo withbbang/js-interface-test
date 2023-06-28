@@ -11,6 +11,8 @@ const App = (): JSX.Element => {
     // Native -> Web
     window.addEventListener('showAlertMessage', handleEventFromNative);
 
+    window.jsInterface['reactFunc'] = reactFunc;
+
     if (window.android) {
       window.android['showAlertMessage']();
     }
@@ -34,7 +36,6 @@ const App = (): JSX.Element => {
   };
 
   const reactFunc = (data: any) => {
-    alert('data in reactFunc: ' + data);
     console.log(data);
   };
 
