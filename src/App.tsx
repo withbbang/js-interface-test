@@ -3,26 +3,26 @@ import { useEffect, useRef, useState } from 'react';
 const App = (): JSX.Element => {
   const [value, setValue] = useState('');
 
-  useEffect(() => {
-    const handleEventFromNative = async (e: any) => {
-      setValue(e.detail.data);
-    };
-
-    // Native -> Web
-    window.addEventListener('showAlertMessage', handleEventFromNative);
-
-    if (window.jsInterface) {
-      window.jsInterface['reactFunc'] = reactFunc;
-    }
-
+  // Native -> Web
+  window.addEventListener('showAlertMessage', () => {
     if (window.android) {
-      window.android['showAlertMessage']();
+      window.android.showToastMessage('나는 K상남자~!');
     }
+  });
 
-    return () => {
-      window.removeEventListener('showAlertMessage', handleEventFromNative);
+  if (window.jsInterface) {
+    window.jsInterface['reactFunc'] = (data: any) => {
+      console.log(data);
     };
-  }, []);
+  }
+
+  if (window.android) {
+    window.android['showAlertMessage']();
+  }
+
+  const handleEventFromNative = async (e: any) => {
+    setValue(e.detail.data);
+  };
 
   const handleShowToastMessage = () => {
     // Web -> Native
