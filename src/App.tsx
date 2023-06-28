@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const App = (): JSX.Element => {
   const [value, setValue] = useState('');
@@ -48,8 +48,8 @@ const App = (): JSX.Element => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <h1>Javascript Interface Test</h1>
-      <input value={value} />
-      <input value={osType} />
+      <input placeholder={'Text From Native'} value={value} />
+      <input placeholder={'Text For OS'} value={osType} />
       <button onClick={handleShowToastMessage}>showToastMessage</button>
       <button onClick={handleGetOsType}>showOsType</button>
     </div>
