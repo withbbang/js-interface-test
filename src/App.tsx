@@ -3,22 +3,19 @@ import { useEffect, useRef, useState } from 'react';
 const App = (): JSX.Element => {
   const [value, setValue] = useState('');
 
-  // Native -> Web
-  window.addEventListener('showAlertMessage', () => {
-    if (window.android) {
-      window.android.showToastMessage('나는 K상남자~!');
+  useEffect(() => {
+    // Native -> Web
+    window.addEventListener('showAlertMessage', handleEventFromNative);
+
+    // Native -> Web
+    if (window.jsInterface) {
+      window.jsInterface['reactFunc'] = reactFunc;
     }
-  });
 
-  if (window.jsInterface) {
-    window.jsInterface['reactFunc'] = (data: any) => {
-      console.log(data);
-    };
-  }
-
-  if (window.android) {
-    window.android['showAlertMessage']();
-  }
+    if (window.android) {
+      window.android['showAlertMessage']();
+    }
+  }, []);
 
   const handleEventFromNative = async (e: any) => {
     setValue(e.detail.data);
@@ -31,14 +28,20 @@ const App = (): JSX.Element => {
     }
   };
 
-  const handleShowAlertMessage = () => {
-    if (window.android) {
-      window.android.showAlertMessage();
-    }
-  };
-
   const reactFunc = (data: any) => {
     console.log(data);
+  };
+
+  const handleGetOsType = () => {
+    const userAgent = navigator.userAgent || navigator.vendor;
+
+    if (/android/i.test(userAgent)) {
+      console.log('Android');
+    } else if (/iPad|iPhone|iPod/.test(userAgent)) {
+      console.log('IOS');
+    } else {
+      console.log('Unknown');
+    }
   };
 
   return (
@@ -46,7 +49,7 @@ const App = (): JSX.Element => {
       <h1>Javascript Interface Test</h1>
       <input value={value} />
       <button onClick={handleShowToastMessage}>showToastMessage</button>
-      {/* <button onClick={handleShowAlertMessage}>showAlertMessage</button> */}
+      <button onClick={handleGetOsType}>showOsType</button>
     </div>
   );
 };
