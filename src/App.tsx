@@ -33,7 +33,7 @@ const App = (): JSX.Element => {
   };
 
   const handleGetOsType = () => {
-    const userAgent = navigator.userAgent || navigator.vendor;
+    const { userAgent } = navigator;
 
     if (/android/i.test(userAgent)) {
       console.log('Android');
