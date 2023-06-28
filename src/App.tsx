@@ -9,14 +9,14 @@ const App = (): JSX.Element => {
     };
 
     // Native -> Web
-    window.addEventListener('showAlert', handleEventFromNative);
+    window.addEventListener('showAlertMessage', handleEventFromNative);
 
     if (window.android) {
-      window.android.showAlertMessage();
+      window.android['showAlertMessage']();
     }
 
     return () => {
-      window.removeEventListener('showAlert', handleEventFromNative);
+      window.removeEventListener('showAlertMessage', handleEventFromNative);
     };
   }, []);
 
