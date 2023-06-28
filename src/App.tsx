@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 const App = (): JSX.Element => {
   const [value, setValue] = useState('');
+  const [osType, setOsType] = useState('');
 
   useEffect(() => {
     // Native -> Web
@@ -36,18 +37,19 @@ const App = (): JSX.Element => {
     const { userAgent } = navigator;
 
     if (/android/i.test(userAgent)) {
-      console.log('Android');
+      setOsType('Android');
     } else if (/iPad|iPhone|iPod/.test(userAgent)) {
-      console.log('IOS');
+      setOsType('IOS');
     } else {
-      console.log('Unknown');
+      setOsType('Unknown');
     }
   };
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       <h1>Javascript Interface Test</h1>
       <input value={value} />
+      <input value={osType} />
       <button onClick={handleShowToastMessage}>showToastMessage</button>
       <button onClick={handleGetOsType}>showOsType</button>
     </div>
