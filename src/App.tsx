@@ -26,9 +26,11 @@ const App = (): JSX.Element => {
 
   const handleShowToastMessage = () => {
     // Web -> Native
-    if (window.android) {
-      window.android.showToastMessage('나는 K상남자~!');
-    }
+    handleJavascriptInterface('showToastMessage', '나는 K상남자~!');
+
+    // if (window.android) {
+    //   window.android.showToastMessage('나는 K상남자~!');
+    // }
   };
 
   const reactFunc = (data: any) => {
