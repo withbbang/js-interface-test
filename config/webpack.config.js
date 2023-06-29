@@ -743,7 +743,11 @@ module.exports = function (webpackEnv) {
               })
             }
           }
-        })
+        }),
+      process.env.REACT_APP_MODE === 'production' && [
+        'transform-remove-console',
+        { exclude: ['error', 'warn'] }
+      ]
     ].filter(Boolean),
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
