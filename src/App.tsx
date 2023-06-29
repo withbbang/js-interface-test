@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 const App = (): JSX.Element => {
   const [value, setValue] = useState('');
   const [osType, setOsType] = useState('');
+  const [customText, setCustomText] = useState('');
 
   useEffect(() => {
     // Native -> Web
@@ -46,21 +47,29 @@ const App = (): JSX.Element => {
   };
 
   const handleShowToastMessageIncludingData = async () => {
-    if (window.android) {
-      let data;
-      window.addEventListener(
-        'showToastMessageIncludingData',
-        async (e: any) => {
+    const value = await handlePromiseShowToastMessageIncludingData();
+
+    setCustomText(value);
+  };
+
+  const handlePromiseShowToastMessageIncludingData = (): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      if (window.android) {
+        let data = '';
+
+        window.addEventListener('showToastMessageIncludingData', (e: any) => {
           data = e.detail.data;
-        }
-      );
+        });
 
-      await window.android.showToastMessageIncludingData('나는 K마초남~!');
+        window.android.showToastMessageIncludingData('나는 K마초남~!');
 
-      console.log(data);
+        console.log(data);
 
-      return data;
-    }
+        resolve(data);
+      } else {
+        reject();
+      }
+    });
   };
 
   return (
@@ -68,6 +77,7 @@ const App = (): JSX.Element => {
       <h1>Javascript Interface Test</h1>
       <input placeholder={'Text From Native'} value={value} />
       <input placeholder={'Text For OS'} value={osType} />
+      <input placeholder={'Custom Text From Native'} value={customText} />
       <button onClick={handleShowToastMessage}>showToastMessage</button>
       <button onClick={handleGetOsType}>showOsType</button>
       <button onClick={handleShowToastMessageIncludingData}>
