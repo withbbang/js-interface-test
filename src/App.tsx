@@ -70,6 +70,13 @@ const App = (): JSX.Element => {
       >
         showToastMessageIncludingData
       </button>
+      <button
+        onClick={() => {
+          window.location.href = '/html/test.html';
+        }}
+      >
+        Go To Test Html
+      </button>
     </div>
   );
 };
