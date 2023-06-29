@@ -55,17 +55,11 @@ const App = (): JSX.Element => {
   const handlePromiseShowToastMessageIncludingData = (): Promise<string> => {
     return new Promise((resolve, reject) => {
       if (window.android) {
-        let data = '';
-
         window.addEventListener('showToastMessageIncludingData', (e: any) => {
-          data = e.detail.data;
+          resolve(e.detail.data);
         });
 
         window.android.showToastMessageIncludingData('나는 K마초남~!');
-
-        console.log(data);
-
-        resolve(data);
       } else {
         reject();
       }
