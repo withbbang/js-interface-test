@@ -1,6 +1,6 @@
 module.exports = {
   plugins:
     process.env.REACT_APP_MODE === 'production'
-      ? ['transform-remove-console']
+      ? ['transform-remove-console', { exclude: ['error', 'warn'] }]
       : []
 };
