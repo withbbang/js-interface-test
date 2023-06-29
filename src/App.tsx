@@ -55,7 +55,7 @@ const App = (): JSX.Element => {
         data = e.detail.data;
       });
 
-      window.android['showToastMessageIncludingData']('나는 K마초남~!');
+      window.android.showToastMessageIncludingData('나는 K마초남~!');
 
       console.log(data);
 
