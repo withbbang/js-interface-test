@@ -16,9 +16,6 @@ const App = (): JSX.Element => {
     if (window.android) {
       window.android['showAlertMessage']();
     }
-
-    console.log('log');
-    console.error('error');
   }, []);
 
   const handleEventFromNative = async (e: any) => {
@@ -48,14 +45,17 @@ const App = (): JSX.Element => {
     }
   };
 
-  const handleShowToastMessageIncludingData = () => {
+  const handleShowToastMessageIncludingData = async () => {
     if (window.android) {
       let data;
-      window.addEventListener('showToastMessageIncludingData', (e: any) => {
-        data = e.detail.data;
-      });
+      window.addEventListener(
+        'showToastMessageIncludingData',
+        async (e: any) => {
+          data = e.detail.data;
+        }
+      );
 
-      window.android.showToastMessageIncludingData('나는 K마초남~!');
+      await window.android.showToastMessageIncludingData('나는 K마초남~!');
 
       console.log(data);
 
