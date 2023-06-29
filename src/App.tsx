@@ -16,6 +16,9 @@ const App = (): JSX.Element => {
     if (window.android) {
       window.android['showAlertMessage']();
     }
+
+    console.log('log');
+    console.error('error');
   }, []);
 
   const handleEventFromNative = async (e: any) => {
