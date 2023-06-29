@@ -48,14 +48,14 @@ const App = (): JSX.Element => {
     }
   };
 
-  const handleShowToastMessageIncludingData = async () => {
+  const handleShowToastMessageIncludingData = () => {
     if (window.android) {
       let data;
       window.addEventListener('showToastMessageIncludingData', (e: any) => {
         data = e.detail.data;
       });
 
-      await window.android['showToastMessageIncludingData']('나는 K마초남~!');
+      window.android['showToastMessageIncludingData']('나는 K마초남~!');
 
       console.log(data);
 
