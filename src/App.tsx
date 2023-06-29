@@ -48,6 +48,21 @@ const App = (): JSX.Element => {
     }
   };
 
+  const handleShowToastMessageIncludingData = async () => {
+    if (window.android) {
+      let data;
+      window.addEventListener('showToastMessageIncludingData', (e: any) => {
+        data = e.detail.data;
+      });
+
+      await window.android['showToastMessageIncludingData']('나는 K마초남~!');
+
+      console.log(data);
+
+      return data;
+    }
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <h1>Javascript Interface Test</h1>
@@ -55,6 +70,9 @@ const App = (): JSX.Element => {
       <input placeholder={'Text For OS'} value={osType} />
       <button onClick={handleShowToastMessage}>showToastMessage</button>
       <button onClick={handleGetOsType}>showOsType</button>
+      <button onClick={handleShowToastMessageIncludingData}>
+        showToastMessageIncludingData
+      </button>
     </div>
   );
 };
