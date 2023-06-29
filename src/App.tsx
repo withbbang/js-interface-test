@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { handleJavascriptInterface } from 'utils/common';
 
 const App = (): JSX.Element => {
   const [value, setValue] = useState('');
@@ -46,24 +47,10 @@ const App = (): JSX.Element => {
     }
   };
 
-  const handleShowToastMessageIncludingData = async () => {
-    const value = await handlePromiseShowToastMessageIncludingData();
+  const handleShowToastMessageIncludingData = async (action: string) => {
+    const value = await handleJavascriptInterface(action, '나는 K마초남~!');
 
     setCustomText(value);
-  };
-
-  const handlePromiseShowToastMessageIncludingData = (): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      if (window.android) {
-        window.addEventListener('showToastMessageIncludingData', (e: any) => {
-          resolve(e.detail.data);
-        });
-
-        window.android.showToastMessageIncludingData('나는 K마초남~!');
-      } else {
-        reject();
-      }
-    });
   };
 
   return (
@@ -74,7 +61,11 @@ const App = (): JSX.Element => {
       <input placeholder={'Custom Text From Native'} value={customText} />
       <button onClick={handleShowToastMessage}>showToastMessage</button>
       <button onClick={handleGetOsType}>showOsType</button>
-      <button onClick={handleShowToastMessageIncludingData}>
+      <button
+        onClick={() =>
+          handleShowToastMessageIncludingData('showToastMessageIncludingData')
+        }
+      >
         showToastMessageIncludingData
       </button>
     </div>
