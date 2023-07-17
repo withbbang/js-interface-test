@@ -26,8 +26,8 @@ const Index = (): JSX.Element => {
     handleJavascriptInterface('showToastMessage', '나는 K상남자~!');
   };
 
-  const handleGoToTestPage = () => {
-    handleJavascriptInterface('test');
+  const handleGoToTestPage = async () => {
+    await handleJavascriptInterface('test');
   };
 
   const reactFunc = (data: any) => {
