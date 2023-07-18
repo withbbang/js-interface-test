@@ -30,6 +30,16 @@ const Index = (): JSX.Element => {
     await handleJavascriptInterface('test');
   };
 
+  const handleShowToastMessageIncludingData = async (action: string) => {
+    const value = await handleJavascriptInterface(action, '나는 K마초남~!');
+
+    setCustomText(value);
+  };
+
+  const handleFinish = () => {
+    handleJavascriptInterface('finish');
+  };
+
   const reactFunc = (data: any) => {
     console.log(data);
   };
@@ -44,12 +54,6 @@ const Index = (): JSX.Element => {
     } else {
       setOsType('Unknown');
     }
-  };
-
-  const handleShowToastMessageIncludingData = async (action: string) => {
-    const value = await handleJavascriptInterface(action, '나는 K마초남~!');
-
-    setCustomText(value);
   };
 
   return (
@@ -75,6 +79,7 @@ const Index = (): JSX.Element => {
         Go To Test Html
       </button>
       <button onClick={handleGoToTestPage}>Go To Test Page!</button>
+      <button onClick={handleFinish}>Finish Activity!</button>
     </div>
   );
 };
