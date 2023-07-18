@@ -26,14 +26,14 @@ const Index = (): JSX.Element => {
     handleJavascriptInterface('showToastMessage', '나는 K상남자~!');
   };
 
-  const handleGoToTestPage = (action: string) => {
-    handleJavascriptInterface(action);
-  };
-
   const handleShowToastMessageIncludingData = async (action: string) => {
     const value = await handleJavascriptInterface(action, '나는 K마초남~!');
 
     setCustomText(value);
+  };
+
+  const handleGoToTestPage = (action: string) => {
+    handleJavascriptInterface(action);
   };
 
   const handleFinish = (action: string) => {

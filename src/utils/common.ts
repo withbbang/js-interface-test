@@ -37,7 +37,9 @@ export const handleJavascriptInterface = (
       });
 
       if (window[interfaceNm][action]) {
-        window[interfaceNm][action](data || '');
+        // FIXME: 인자값 undefined로 함수 호출 시 'Method not found' 에러 발생.
+        // FIXME: 빈 문자열로 호출하면 Native jsInterface 함수에서 무조건 인자값 string으로 받아주어야 한다.
+        window[interfaceNm][action](data);
       } else {
         reject();
       }
