@@ -28,6 +28,8 @@ export const handleJavascriptInterface = (
 ): Promise<string> => {
   return new Promise((resolve, reject) => {
     const interfaceNm = (bridge || 'android') as keyof Window;
+    console.debug('interfaceNm: ', interfaceNm);
+    console.debug('action: ', action);
 
     if (window[interfaceNm]) {
       window.addEventListener(action, (e: any) => {
