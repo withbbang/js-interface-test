@@ -37,8 +37,8 @@ export const handleJavascriptInterface = (
       });
 
       if (window[interfaceNm][action]) {
-        // FIXME: 인자값 undefined로 함수 호출 시 'Method not found' 에러 발생.
-        // FIXME: 빈 문자열로 호출하면 Native jsInterface 함수에서 무조건 인자값 string으로 받아주어야 한다.
+        // FIXME: data === undefined일 경우, undefined가 전달돼서 Method not found 에러가 발생한다.
+        // FIXME: 따라서 전달되는 인자값과 Native jsInterface에서 받는 인자값의 타입은 무조건 동일해야한다.
         data !== undefined
           ? window[interfaceNm][action](data)
           : window[interfaceNm][action]();

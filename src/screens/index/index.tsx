@@ -32,12 +32,12 @@ const Index = (): JSX.Element => {
     setCustomText(value);
   };
 
-  const handleGoToTestPage = (action: string) => {
-    handleJavascriptInterface(action);
+  const handleGoToTestPage = () => {
+    handleJavascriptInterface('test');
   };
 
-  const handleFinish = (action: string) => {
-    handleJavascriptInterface(action);
+  const handleFinish = () => {
+    handleJavascriptInterface('finish');
   };
 
   const reactFunc = (data: any) => {
@@ -78,10 +78,8 @@ const Index = (): JSX.Element => {
       >
         Go To Test Html
       </button>
-      <button onClick={() => handleGoToTestPage('test')}>
-        Go To Test Page!
-      </button>
-      <button onClick={() => handleFinish('finish')}>Finish Activity!</button>
+      <button onClick={handleGoToTestPage}>Go To Test Page!</button>
+      <button onClick={handleFinish}>Finish Activity!</button>
     </div>
   );
 };
