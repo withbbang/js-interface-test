@@ -35,7 +35,7 @@ export const handleJavascriptInterface = (
       });
 
       if (window[interfaceNm][action]) {
-        window[interfaceNm][action](data);
+        window[interfaceNm][action](data || '');
       } else {
         reject();
       }
