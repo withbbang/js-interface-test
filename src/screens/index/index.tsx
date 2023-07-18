@@ -36,8 +36,8 @@ const Index = (): JSX.Element => {
     setCustomText(value);
   };
 
-  const handleFinish = () => {
-    handleJavascriptInterface('finish');
+  const handleFinish = async () => {
+    await handleJavascriptInterface('finish');
   };
 
   const reactFunc = (data: any) => {
