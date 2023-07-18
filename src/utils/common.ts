@@ -36,8 +36,8 @@ export const handleJavascriptInterface = (
         resolve(e.detail.data);
       });
 
-      if (window[interfaceNm][action.trim()]) {
-        window[interfaceNm][action.trim()](data || '');
+      if (window[interfaceNm][action]) {
+        window[interfaceNm][action](data || '');
       } else {
         reject();
       }

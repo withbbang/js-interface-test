@@ -26,8 +26,8 @@ const Index = (): JSX.Element => {
     handleJavascriptInterface('showToastMessage', '나는 K상남자~!');
   };
 
-  const handleGoToTestPage = async () => {
-    await handleJavascriptInterface('test');
+  const handleGoToTestPage = () => {
+    handleJavascriptInterface('test');
   };
 
   const handleShowToastMessageIncludingData = async (action: string) => {
@@ -36,8 +36,8 @@ const Index = (): JSX.Element => {
     setCustomText(value);
   };
 
-  const handleFinish = async () => {
-    await handleJavascriptInterface('finish');
+  const handleFinish = () => {
+    handleJavascriptInterface('finish');
   };
 
   const reactFunc = (data: any) => {
@@ -78,8 +78,8 @@ const Index = (): JSX.Element => {
       >
         Go To Test Html
       </button>
-      <button onClick={handleGoToTestPage}>Go To Test Page!</button>
-      <button onClick={handleFinish}>Finish Activity!</button>
+      <button onClick={() => handleGoToTestPage()}>Go To Test Page!</button>
+      <button onClick={() => handleFinish()}>Finish Activity!</button>
     </div>
   );
 };
