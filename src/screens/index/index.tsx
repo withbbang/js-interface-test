@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { handleJavascriptInterface } from 'utils/common';
+import { CustomWindow } from 'utils/types';
 
 const Index = (): JSX.Element => {
   const [value, setValue] = useState('');
@@ -16,6 +17,12 @@ const Index = (): JSX.Element => {
     if (window.android) {
       window.android['showAlertMessage']();
     }
+
+    const customWindow = window as CustomWindow;
+    customWindow.onResult = reactFunc;
+    // customWindow.onResult = (data: any) => {
+    //   alert('goood');
+    // };
   }, []);
 
   const handleEventFromNative = async (e: any) => {
@@ -41,7 +48,7 @@ const Index = (): JSX.Element => {
   };
 
   const reactFunc = (data: any) => {
-    console.log(data);
+    alert(data + 'yes!!!');
   };
 
   const handleGetOsType = () => {
