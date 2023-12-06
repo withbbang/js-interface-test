@@ -48,7 +48,7 @@ const Index = (): JSX.Element => {
   };
 
   const reactFunc = (data: any) => {
-    alert(data + 'yes!!!');
+    setCustomText(data + 'yes!!!');
   };
 
   const handleGetOsType = () => {
