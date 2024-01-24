@@ -65,7 +65,7 @@ const Index = (): JSX.Element => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <h1>Javascript Interface Test</h1>
+      <h1>{process.env.REACT_APP_MODE}</h1>
       <input placeholder={'Text From Native'} value={value} />
       <input placeholder={'Text For OS'} value={osType} />
       <input placeholder={'Custom Text From Native'} value={customText} />
